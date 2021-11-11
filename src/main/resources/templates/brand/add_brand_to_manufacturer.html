@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Brand to Manufacturer</title>
+</head>
+<body>
+
+<form th:action="@{/brand/save}" method="post" th:object="${brandDTO}">
+    <div>
+        <input type="hidden" th:field="*{manufacturerDTO.id}" th:readonly="true">
+
+        <label>Название Производителя</label>
+        <input type="text" th:field="*{manufacturerDTO.name}" th:readonly="true">
+        <br>
+        <br>
+        <label>Название Бренда</label>
+        <input type="text" th:field="*{name}">
+    </div>
+    <br>
+    <div>
+        <button type="submit">Добавить Бред Производителю</button>
+    </div>
+</form>
+</body>
+</html>

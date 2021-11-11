@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Brands Manufacturer</title>
+</head>
+<body>
+<label th:text="${manufacturerDTO.name}"/>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Бренды</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="brand : ${manufacturerDTO.getBrandDTOS()}">
+        <td th:text="${brand.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

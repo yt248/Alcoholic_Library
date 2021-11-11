@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Manufacturer</title>
+</head>
+<body>
+
+<form th:action="@{/manufacturer/edit/{id}(id=${manufacturerDTO.id})}" th:method="Patch" th:object="${manufacturerDTO}">
+    <div>
+        <label>Наименование производителя</label>
+        <input type="text" th:field="*{name}">
+    </div>
+<div>
+    <button type="submit">Изменить Производителя</button>
+</div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Brand</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Бренд</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="brand : ${brandDTOList}">
+        <td th:text="${brand.name}"></td>
+        <td><a th:href="@{/brand/edit/{id}(id=${brand.id})}">Edit</a></td>
+        <td>
+            <form  th:method="DELETE" th:action="@{/brand/delete/{id}(id=${brand.id})}">
+                <button type="submit" >Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

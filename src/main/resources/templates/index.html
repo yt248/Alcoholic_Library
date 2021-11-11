@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<style>
+    #center {
+        text-align: center;
+    }
+</style>
+<body>
+
+<div id="center">
+    <h1>Welcome to the site Alcoholic Library</h1>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <form th:action="@{/manufacturer/}" th:method="GET">
+            <button type="submit">Go to Manufacturers page</button>
+        </form>
+        <br>
+        <form th:action="@{/brand/}" th:method="GET">
+            <button type="submit">Go to Brands page</button>
+        </form>
+    </div>
+    <br>
+    <form th:action="@{/cognac/}" th:method="GET">
+        <button type="submit">Go to Cognac page</button>
+    </form>
+</div>
+</body>
+</html>
