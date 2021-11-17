@@ -30,6 +30,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public void update(Long id, Manufacturer newManufacturer) {
         Manufacturer updateManufacturer = getById(id);
         updateManufacturer.setName(newManufacturer.getName());
+        updateManufacturer.setDescription(newManufacturer.getDescription());
+
         manufacturerRepo.save(updateManufacturer);
     }
 

@@ -6,6 +6,8 @@ public class BrandDTO {
 
     private String name;
 
+    private String description;
+
     private ManufacturerDTO manufacturerDTO;
 
     public BrandDTO() {

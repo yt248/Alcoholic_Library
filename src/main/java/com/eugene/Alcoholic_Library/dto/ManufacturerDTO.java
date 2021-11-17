@@ -1,7 +1,6 @@
 package com.eugene.Alcoholic_Library.dto;
 
-import com.eugene.Alcoholic_Library.model.modulManufacturerBrand.Brand;
-
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,17 +8,21 @@ public class ManufacturerDTO {
 
     private Long id;
 
+    @NotEmpty(message = "Name should not be empty")
     private String name;
+
+    @NotEmpty(message = "Description should not be empty")
+    private String description;
 
     private Set<BrandDTO> brandDTOS = new HashSet<>();
 
     public ManufacturerDTO() {
     }
 
-    public ManufacturerDTO(String name) {
+    public ManufacturerDTO(String name, String description) {
         this.name = name;
+        this.description = description;
     }
-
 
     public Long getId() {
         return id;
@@ -43,5 +46,13 @@ public class ManufacturerDTO {
 
     public void setBrandDTOS(Set<BrandDTO> brandDTOS) {
         this.brandDTOS = brandDTOS;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

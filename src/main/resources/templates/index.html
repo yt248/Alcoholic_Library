@@ -15,17 +15,27 @@
     <h1>Welcome to the site Alcoholic Library</h1>
 
     <div sec:authorize="hasRole('ROLE_ADMIN')">
-        <form th:action="@{/manufacturer/}" th:method="GET">
-            <button type="submit">Go to Manufacturers page</button>
-        </form>
-        <br>
-        <form th:action="@{/brand/}" th:method="GET">
-            <button type="submit">Go to Brands page</button>
-        </form>
+        <!--        Все что касается роли админа-->
     </div>
+    <form th:action="@{/manufacturer/}" th:method="GET">
+        <button type="submit">Go to Manufacturers page</button>
+    </form>
+    <br>
+    <form th:action="@{/brand/}" th:method="GET">
+        <button type="submit">Go to Brands page</button>
+    </form>
+
     <br>
     <form th:action="@{/cognac/}" th:method="GET">
         <button type="submit">Go to Cognac page</button>
+    </form>
+    <br>
+    <form th:action="@{/country/}" th:method="GET">
+        <button type="submit">Go to Country page</button>
+    </form>
+    <br>
+    <form th:action="@{/region/}" th:method="GET">
+        <button type="submit">Go to Region page</button>
     </form>
 </div>
 </body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Country</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Название страны</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Show</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="country : ${countryDTOList}">
+        <td th:text="${country.name}"></td>
+        <td><a th:href="@{/country/edit/{id}(id=${country.id})}">Edit</a></td>
+        <td>
+            <form th:method="DELETE" th:action="@{/country/delete/{id}(id=${country.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td><a th:href="@{/country/{id}(id=${country.id})}">Show</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form th:method="GET" th:action="@{/country/add}">
+        <button type="submit">Добавить Страну</button>
+    </form>
+
+</div>
+</body>
+</html>

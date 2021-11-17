@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Region</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Название региона</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="region : ${regionDTOList}">
+        <td th:text="${region.name}"></td>
+        <td><a th:href="@{/region/edit/{id}(id=${region.id})}">Edit</a></td>
+        <td>
+            <form th:method="DELETE" th:action="@{/region/delete/{id}(id=${region.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form th:method="GET" th:action="@{/region/add}">
+        <button type="submit">Добавить Регион</button>
+    </form>
+</div>
+</body>
+</html>

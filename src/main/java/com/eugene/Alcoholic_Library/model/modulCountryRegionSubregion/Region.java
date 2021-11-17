@@ -25,10 +25,14 @@ public class Region {
     private Set<Subregion> subregions = new HashSet<>();
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private Set<Appellation> appellations = new HashSet<>();
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
     private Set<Brandy> brandies = new HashSet<>();
 
     @OneToMany(mappedBy = "region",cascade = CascadeType.ALL)
     private Set<Cognac> cognacs = new HashSet<>();
+
 
 
     public Region() {
@@ -84,5 +88,13 @@ public class Region {
 
     public void setCognacs(Set<Cognac> cognacs) {
         this.cognacs = cognacs;
+    }
+
+    public Set<Appellation> getAppellations() {
+        return appellations;
+    }
+
+    public void setAppellations(Set<Appellation> appellations) {
+        this.appellations = appellations;
     }
 }

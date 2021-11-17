@@ -18,6 +18,9 @@ public class Manufacturer {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
+
     @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
     private Set<Brand> brands = new HashSet<>();
 
@@ -30,10 +33,11 @@ public class Manufacturer {
     public Manufacturer() {
     }
 
-    public Manufacturer(String name) {
-        this.name = name;
-    }
 
+    public Manufacturer(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -73,5 +77,13 @@ public class Manufacturer {
 
     public void setCognacs(Set<Cognac> cognacs) {
         this.cognacs = cognacs;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

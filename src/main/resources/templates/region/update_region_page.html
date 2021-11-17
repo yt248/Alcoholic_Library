@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Region</title>
+</head>
+<body>
+<form th:action="@{/region/edit}" th:method="patch" th:object="${regionAndCountryIdDTO}">
+    <div>
+        <input type="hidden" th:field="*{id}">
+                <label for="idCountry">Выбрать страну</label>
+        <br>
+        <select th:field="*{idCountry}" id="idCountry">
+            <option th:each="countryDto : ${countryDTOList}" th:value="${countryDto.id}"
+                    th:text="${countryDto.name}"></option>
+        </select>
+        <input type="hidden" th:field="*{idCountry}">
+        <br>
+        <br>
+        <label for="regionName"> Название Региона</label>
+        <br>
+        <input type="text" th:field="*{name}" id="regionName">
+        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+
+    </div>
+    <br>
+    <div>
+        <button type="submit">Обновить Регион</button>
+    </div>
+</form>
+
+
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.eugene.Alcoholic_Library.model.categories;
 
 import com.eugene.Alcoholic_Library.model.enums.ClassificationCognac;
 import com.eugene.Alcoholic_Library.model.enums.ProductCategory;
+import com.eugene.Alcoholic_Library.model.modulCountryRegionSubregion.Appellation;
 import com.eugene.Alcoholic_Library.model.modulCountryRegionSubregion.Country;
 import com.eugene.Alcoholic_Library.model.modulCountryRegionSubregion.Region;
 import com.eugene.Alcoholic_Library.model.modulManufacturerBrand.Brand;
@@ -34,6 +35,8 @@ public class Cognac {
     @Column(name = "alcohol_volume")
     private Double alcoholVolume;         //Крепость алкоголя
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Appellation appellation;   //Аппелласьеон
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Manufacturer manufacturer;             // Производитель.   У производителя может быть нескоько брендов, две таблицы
@@ -137,5 +140,13 @@ public class Cognac {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public Appellation getAppellation() {
+        return appellation;
+    }
+
+    public void setAppellation(Appellation appellation) {
+        this.appellation = appellation;
     }
 }

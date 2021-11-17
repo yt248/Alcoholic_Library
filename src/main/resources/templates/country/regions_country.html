@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Regions Country</title>
+</head>
+<body>
+<label th:text="${countryDTO.name}"/>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Регионы</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="region : ${countryDTO.getRegionDTOS()}">
+        <td th:text="${region.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

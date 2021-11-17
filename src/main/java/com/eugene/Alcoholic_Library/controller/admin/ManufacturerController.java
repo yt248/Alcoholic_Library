@@ -1,18 +1,16 @@
 package com.eugene.Alcoholic_Library.controller.admin;
 
-import com.eugene.Alcoholic_Library.dto.BrandDTO;
 import com.eugene.Alcoholic_Library.dto.ManufacturerDTO;
-import com.eugene.Alcoholic_Library.dto.mappers.MapperBrand;
 import com.eugene.Alcoholic_Library.dto.mappers.MapperManufacturer;
-import com.eugene.Alcoholic_Library.model.modulManufacturerBrand.Manufacturer;
-import com.eugene.Alcoholic_Library.service.BrandService;
 import com.eugene.Alcoholic_Library.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +44,11 @@ public class ManufacturerController {
     }
 
     @PostMapping("/save")
-    public String saveManufacturer(@ModelAttribute("manufacturerDTO") ManufacturerDTO manufacturerDTO) {
+    public String saveManufacturer(@ModelAttribute("manufacturerDTO") @Valid ManufacturerDTO manufacturerDTO,
+                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "manufacturer/add_form_manufacturer";
+
         manufacturerService.create(MapperManufacturer.toEntity(manufacturerDTO));
         return "redirect:/manufacturer";
     }
@@ -59,7 +61,11 @@ public class ManufacturerController {
 
 
     @PatchMapping("/edit/{id}")
-    public String editManufacturer(@PathVariable("id") Long id, @ModelAttribute("manufacturerDTO") ManufacturerDTO manufacturerDTO) {
+    public String editManufacturer(@PathVariable("id") Long id, @ModelAttribute("manufacturerDTO") @Valid ManufacturerDTO manufacturerDTO,
+                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "manufacturer/update_form_manufacturer";
+
         manufacturerService.update(id, MapperManufacturer.toEntity(manufacturerDTO));
         return "redirect:/manufacturer";
     }
@@ -71,5 +77,7 @@ public class ManufacturerController {
         model.addAttribute("manufacturerDTO", manufacturerDTO);
         return "manufacturer/brands_manufacturer";
     }
+
+
 
 }
