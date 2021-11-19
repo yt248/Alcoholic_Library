@@ -2,7 +2,7 @@ package com.eugene.Alcoholic_Library.dto;
 
 import javax.validation.constraints.NotEmpty;
 
-public class RegionAndCountryIdDTO {
+public class RegionAddAndUpdateDTO {
 
     private long id;
 
@@ -11,11 +11,16 @@ public class RegionAndCountryIdDTO {
 
     private Long idCountry;
 
-    public RegionAndCountryIdDTO() {
+    public RegionAddAndUpdateDTO() {
     }
 
-    public RegionAndCountryIdDTO(String name) {
+    public RegionAddAndUpdateDTO(String name) {
         this.name = name;
+    }
+
+    public RegionAddAndUpdateDTO(String name, Long idCountry) {
+        this.name = name;
+        this.idCountry = idCountry;
     }
 
     public long getId() {

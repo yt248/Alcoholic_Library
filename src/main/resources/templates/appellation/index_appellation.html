@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Appellation</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Название аппеласьона</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appellation : ${appellationDTOList}">
+        <td th:text="${appellation.name}"></td>
+        <td><a th:href="@{/appellation/edit/{id}(id=${appellation.id})}">Edit</a></td>
+        <td>
+            <form th:method="DELETE" th:action="@{/appellation/delete/{id}(id=${appellation.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form th:method="GET" th:action="@{/appellation/add}">
+        <button type="submit">Добавить Аппеласьон</button>
+    </form>
+</div>
+</body>
+</html>

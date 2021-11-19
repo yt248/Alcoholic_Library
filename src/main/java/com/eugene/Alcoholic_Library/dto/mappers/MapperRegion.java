@@ -10,7 +10,8 @@ public class MapperRegion {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
 
-//        dto.setCountryDTO(MapperCountry.toDto(entity.getCountry()));
+        entity.getSubregions().forEach(subregion -> dto.getSubregionDTOS().add(MapperSubregion.toDto(subregion)));
+        entity.getAppellations().forEach(appellation -> dto.getAppellationDTOS().add(MapperAppellation.toDto(appellation)));
 
         return dto;
     }
@@ -20,7 +21,9 @@ public class MapperRegion {
         Region entity = new Region();
         entity.setId(dto.getId());
         entity.setName(dto.getName());
-//        entity.setCountry(MapperCountry.toEntity(dto.getCountryDTO()));
+
+        dto.getSubregionDTOS().forEach(subregionDTO -> entity.getSubregions().add(MapperSubregion.toEntity(subregionDTO)));
+        dto.getAppellationDTOS().forEach(appellationDTO -> entity.getAppellations().add(MapperAppellation.toEntity(appellationDTO)));
 
         return entity;
     }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Appellation</title>
+</head>
+<body>
+
+<form th:action="@{/appellation/save}" th:method="post" th:object="${appellationAddAndUpdateDTO}">
+    <label for="idRegion">Выберите регион</label>
+    <br>
+    <select th:field="*{idRegion}" id="idRegion">
+        <option th:each="region : ${regionDTOList}"
+                th:value="${region.id}"
+                th:text="${region.name}"></option>
+    </select>
+    <br>
+    <label for="nameAppellation">Название Аппеласьона</label>
+    <input type="text" th:field="*{name}" id="nameAppellation">
+    <br>
+    <button type="submit">Добавить аппеласьон</button>
+
+</form>
+
+</body>
+</html>

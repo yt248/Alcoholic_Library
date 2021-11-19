@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Subregion</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Название субрегиона</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="subregion : ${subregionDTOList}">
+        <td th:text="${subregion.name}"></td>
+        <td><a th:href="@{/subregion/edit/{id}(id=${subregion.id})}">Edit</a></td>
+        <td>
+            <form th:method="DELETE" th:action="@{/subregion/delete/{id}(id=${subregion.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form th:method="GET" th:action="@{/subregion/add}">
+        <button type="submit">Добавить Субрегион</button>
+    </form>
+</div>
+</body>
+</html>

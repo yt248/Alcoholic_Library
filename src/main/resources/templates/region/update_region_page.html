@@ -5,7 +5,7 @@
     <title>Update Region</title>
 </head>
 <body>
-<form th:action="@{/region/edit}" th:method="patch" th:object="${regionAndCountryIdDTO}">
+<form th:action="@{/region/edit}" th:method="patch" th:object="${regionAddAndUpdateDTO}">
     <div>
         <input type="hidden" th:field="*{id}">
                 <label for="idCountry">Выбрать страну</label>

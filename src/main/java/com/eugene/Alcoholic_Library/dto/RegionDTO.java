@@ -1,8 +1,5 @@
 package com.eugene.Alcoholic_Library.dto;
 
-import com.eugene.Alcoholic_Library.model.modulCountryRegionSubregion.Appellation;
-import com.eugene.Alcoholic_Library.model.modulCountryRegionSubregion.Subregion;
-
 import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,11 +11,9 @@ public class RegionDTO {
     @NotEmpty(message = "Name should not be empty")
     private String name;
 
-//    private CountryDTO countryDTO;
+    private Set<SubregionDTO> subregionDTOS = new HashSet<>();
 
-//    private Set<Subregion> subregions = new HashSet<>();
-
-//    private Set<Appellation> appellations = new HashSet<>();
+    private Set<AppellationDTO> appellationDTOS = new HashSet<>();
 
     public RegionDTO() {
     }
@@ -43,20 +38,19 @@ public class RegionDTO {
         this.name = name;
     }
 
-//    public CountryDTO getCountryDTO() {
-//        return countryDTO;
-//    }
-//
-//    public void setCountryDTO(CountryDTO countryDTO) {
-//        this.countryDTO = countryDTO;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "RegionDTO{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", countryDTO=" + countryDTO +
-//                '}';
-//    }
+    public Set<SubregionDTO> getSubregionDTOS() {
+        return subregionDTOS;
+    }
+
+    public void setSubregionDTOS(Set<SubregionDTO> subregionDTOS) {
+        this.subregionDTOS = subregionDTOS;
+    }
+
+    public Set<AppellationDTO> getAppellationDTOS() {
+        return appellationDTOS;
+    }
+
+    public void setAppellationDTOS(Set<AppellationDTO> appellationDTOS) {
+        this.appellationDTOS = appellationDTOS;
+    }
 }

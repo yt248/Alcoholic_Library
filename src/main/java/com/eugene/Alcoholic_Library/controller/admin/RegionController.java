@@ -1,9 +1,9 @@
 package com.eugene.Alcoholic_Library.controller.admin;
 
 import com.eugene.Alcoholic_Library.dto.CountryDTO;
-import com.eugene.Alcoholic_Library.dto.RegionAndCountryIdDTO;
+import com.eugene.Alcoholic_Library.dto.RegionAddAndUpdateDTO;
 import com.eugene.Alcoholic_Library.dto.RegionDTO;
-import com.eugene.Alcoholic_Library.dto.mappers.MapperRegionAndCountryId;
+import com.eugene.Alcoholic_Library.dto.mappers.MapperRegionAddAndUpdate;
 import com.eugene.Alcoholic_Library.dto.mappers.MapperCountry;
 import com.eugene.Alcoholic_Library.dto.mappers.MapperRegion;
 import com.eugene.Alcoholic_Library.service.CountryService;
@@ -42,7 +42,7 @@ public class RegionController {
 
     @GetMapping("/add")
     public String showCreatePage(Model model) {
-        model.addAttribute("regionAddDTO", new RegionAndCountryIdDTO());
+        model.addAttribute("regionAddDTO", new RegionAddAndUpdateDTO());
 
         List<CountryDTO> countryDTOList = countryService.getAllCountries().stream()
                 .map(MapperCountry::toDto).collect(Collectors.toList());
@@ -53,8 +53,8 @@ public class RegionController {
     }
 
     @PostMapping("/save")
-    public String addRegion(@ModelAttribute("regionAddDTO") RegionAndCountryIdDTO regionAndCountryIdDTO) {
-        regionService.create(MapperRegionAndCountryId.toEntity(regionAndCountryIdDTO), regionAndCountryIdDTO.getIdCountry());
+    public String addRegion(@ModelAttribute("regionAddDTO") RegionAddAndUpdateDTO regionAddAndUpdateDTO) {
+        regionService.create(MapperRegionAddAndUpdate.toEntity(regionAddAndUpdateDTO), regionAddAndUpdateDTO.getIdCountry());
         return "redirect:/region";
     }
 
@@ -65,15 +65,15 @@ public class RegionController {
 
         model.addAttribute("countryDTOList", countryDTOList);
 
-        RegionAndCountryIdDTO regionAndCountryIdDTO = MapperRegionAndCountryId.toDto(regionService.getById(id));
-        model.addAttribute("regionAndCountryIdDTO", regionAndCountryIdDTO);
+        RegionAddAndUpdateDTO regionAddAndUpdateDTO = MapperRegionAddAndUpdate.toDto(regionService.getById(id));
+        model.addAttribute("regionAndCountryIdDTO", regionAddAndUpdateDTO);
         return "region/update_region_page";
     }
 
     @PatchMapping("/edit")
-    public String updateRegion(@ModelAttribute("regionAndCountryIdDTO") RegionAndCountryIdDTO regionAndCountryIdDTO) {
-        regionService.update(regionAndCountryIdDTO.getId(),
-                MapperRegionAndCountryId.toEntity(regionAndCountryIdDTO), regionAndCountryIdDTO.getIdCountry());
+    public String updateRegion(@ModelAttribute("regionAndCountryIdDTO") RegionAddAndUpdateDTO regionAddAndUpdateDTO) {
+        regionService.update(regionAddAndUpdateDTO.getId(),
+                MapperRegionAddAndUpdate.toEntity(regionAddAndUpdateDTO), regionAddAndUpdateDTO.getIdCountry());
 
         return "redirect:/region";
     }
